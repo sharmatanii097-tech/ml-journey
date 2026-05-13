@@ -185,3 +185,49 @@ np.array([[1,2,3],[4,5]])
 → Shape (100, 784) means:
 → 100 images in one batch
 → 784 = 28×28 pixels flattened
+
+
+
+## Special Arrays and Their ML Purpose
+
+### np.random.randn()
+- Creates random numbers
+- Used for: initializing neural network weights
+- Why random? Symmetry problem - zeros would 
+  make all neurons learn same thing
+
+### np.zeros()
+- Creates array of all zeros
+- Used for: creating empty storage before filling
+- Example: storing loss values during training
+
+### np.linspace(start, stop, num)
+- Creates evenly spaced numbers
+- YOU specify how many numbers
+- Used for: testing different learning rates
+- Example: np.linspace(0.0001, 1.0, 10)
+
+### np.arange(start, stop, step)
+- Creates sequence with fixed step
+- YOU specify the step size
+- Used for: counting through dataset indices
+- Example: np.arange(0, 1000, 1)
+
+## Key Difference
+np.arange  → you give step size
+np.linspace → you give number of values
+
+
+## dtype Rules for Special Arrays
+
+Already float64 (ready for ML):
+→ np.zeros()
+→ np.ones()  
+→ np.random.randn()
+
+Follows your input (check before using in ML):
+→ np.arange() with integers → int64
+→ np.array() with integers  → int64
+
+Quick fix if needed:
+→ array.astype(float)
