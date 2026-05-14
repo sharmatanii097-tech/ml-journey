@@ -218,6 +218,27 @@ np.arange  → you give step size
 np.linspace → you give number of values
 
 
+
+Creates a table of zeros
+3 rows, 4 columns
+All values = 0.0
+
+Used in ML for:
+→ Initializing bias values in neural networks
+→ Creating empty arrays to fill later
+→ Masking parts of data
+
+
+
+Day 1 of training:
+Network knows nothing
+→ starts with RANDOM weights (random guesses)
+
+After training:
+Network learns from mistakes
+→ weights become correct values
+
+
 ## dtype Rules for Special Arrays
 
 Already float64 (ready for ML):
@@ -231,3 +252,93 @@ Follows your input (check before using in ML):
 
 Quick fix if needed:
 → array.astype(float)
+
+
+
+## Special Arrays and Their ML Purpose
+
+### np.random.randn()
+- Creates random numbers
+- Used for: initializing neural network weights
+- Why random? Symmetry problem - zeros would 
+  make all neurons learn same thing
+
+### np.zeros()
+- Creates array of all zeros
+- Used for: creating empty storage before filling
+- Example: storing loss values during training
+
+### np.linspace(start, stop, num)
+- Creates evenly spaced numbers
+- YOU specify how many numbers
+- Used for: testing different learning rates
+- Example: np.linspace(0.0001, 1.0, 10)
+
+### np.arange(start, stop, step)
+- Creates sequence with fixed step
+- YOU specify the step size
+- Used for: counting through dataset indices
+- Example: np.arange(0, 1000, 1)
+
+## Key Difference
+np.arange  → you give step size
+np.linspace → you give number of values
+
+
+
+## Two Important NumPy Concepts
+
+### The Dot After Numbers
+0.  =  0.0  =  float64
+1.  =  1.0  =  float64
+Dot = NumPy telling you "this is float!"
+No dot = integer
+
+### Random Numbers
+- Computers cannot be truly random
+- Use Pseudo Random Number Generation
+- Based on current time as starting point
+- Different every run = truly useful for ML
+
+### Random Seed
+np.random.seed(42)
+- Sets starting point for random generation
+- Same seed = same random numbers every time
+- Used for: reproducible ML experiments
+- Why 42? Famous joke from Hitchhiker's Guide!
+
+### When to use seed in ML:
+- When sharing code with others
+- When comparing different models fairly
+- When debugging - reproduce exact same results
+
+
+
+
+## Important Concepts
+
+### Why tuple in np.zeros((3,4))?
+- Tuple = values in round brackets
+- NumPy needs tuple to understand shape clearly
+- np.zeros(3,4) → Error!
+- np.zeros((3,4)) → Works! 3 rows 4 columns
+
+### Bias in Neural Networks
+- Output = (Input × Weight) + Bias
+- Weight = importance of input
+- Bias = adjustment value
+- Weights start RANDOM
+- Bias starts at ZERO (neutral)
+
+### Masking
+- Mask = array of 0s and 1s
+- 1 = keep this value
+- 0 = hide this value
+- data * mask → hides unwanted parts
+- Used in: image processing, attention in transformers
+
+### Broadcasting
+- NumPy stretches smaller array to match bigger
+- array + 10 → adds 10 to every element
+- No loop needed → very fast!
+- Used in: normalizing data, adding bias to layers
