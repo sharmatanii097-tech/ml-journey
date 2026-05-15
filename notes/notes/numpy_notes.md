@@ -342,3 +342,35 @@ np.random.seed(42)
 - array + 10 → adds 10 to every element
 - No loop needed → very fast!
 - Used in: normalizing data, adding bias to layers
+
+
+
+## Important ML Terms
+
+### Epoch
+- 1 epoch = model sees entire dataset once
+- More epochs = model learns better
+- Typical: 10 to 1000 epochs depending on task
+
+### Batch
+- Small chunk of dataset
+- Batch size = how many samples at once
+- Common batch sizes: 32, 64, 128
+- Why batches? Full dataset too big for RAM!
+
+### Loss
+- How wrong the model is right now
+- High loss = very wrong
+- Low loss = doing well
+- Goal = reduce loss with every epoch
+
+### Relationship:
+Total dataset = 60,000 images
+Batch size = 100
+1 epoch = 600 batches
+100 epochs = 60,000 batches total
+
+### Loss during training should go DOWN:
+Epoch 1:   loss = 2.45 (very wrong)
+Epoch 50:  loss = 0.45 (getting better)
+Epoch 100: loss = 0.12 (well trained!)
